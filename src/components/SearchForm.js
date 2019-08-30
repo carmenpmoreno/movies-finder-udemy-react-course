@@ -1,23 +1,33 @@
 import React, { Component } from "react";
 
+const API_KEY = "d2792a7a";
+
 // eslint-disable-next-line react/prefer-stateless-function
 class SearchForm extends Component {
   state = {
     inputMovie: ""
   };
 
-  _handleChange = (event) => {
+  _handleChange = event => {
     const { value } = event.target;
     this.setState({ inputMovie: value });
   };
-  _handleSubmit = (event) => {
+  _handleSubmit = event => {
+    const { inputMovie } = this.state;
+
     event.preventDefault();
-    alert(this.state.inputMovie);
-  }
+    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${inputMovie}`)
+      .then(resp => resp.json())
+      .then(data => {
+        const { Search, totalResults } = data;
+        console.log({ data, Search, totalResults });
+        this.props.handleData(Search);
+      });
+  };
 
   render() {
     return (
-      <form onSubmit={this._handleSubmit} >
+      <form onSubmit={this._handleSubmit}>
         <div className="field has-addons">
           <div className="control">
             <input
