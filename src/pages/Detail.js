@@ -16,26 +16,27 @@ class Detail extends Component {
     fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`)
       .then(resp => resp.json())
       .then(movie => {
-        console.log("movie info", movie)
-        this.setState({movie})
+        console.log("movie info", movie);
+        this.setState({ movie });
       });
   }
-  goBack {
-    window.history.back()
+  goBack() {
+    window.history.back();
   }
 
   render() {
-    const {Title, Poster, Actors, Metascore, Plot} = this.state.movie;
+    const { Title, Poster, Actors, Metascore, Plot } = this.state.movie;
     return (
-      <button onClick={this.goBack}></button>
-      <h1>{Title}</h1>
-      <img src={Poster}></img>
-      <h3>{Actors}</h3>
-      <span>{Metascore}</span>
-      <p>{Plot}</p>
-    ); 
+      <>
+        <button onClick={this.goBack}></button>
+        <h1>{Title}</h1>
+        <img src={Poster}></img>
+        <h3>{Actors}</h3>
+        <span>{Metascore}</span>
+        <p>{Plot}</p>
+      </>
+    );
   }
-
 }
 
 Detail.propTypes = {

@@ -1,38 +1,24 @@
 import React, { Component } from "react";
 import "bulma/css/bulma.css";
 import "./App.css";
-import Title from "./components/Title";
-import SearchForm from "./components/SearchForm";
-import MoviesList from "./components/MoviesList";
 
+import Home from './pages/Home';
+import Detail from './pages/Detail';
+
+// eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
-  state = { usedSearch: false, data: [] };
-
-  _handleData = data => {
-    this.setState({ data: data, usedSearch: true });
-  };
-  _renderResults = () => {
-    return this.state.data.length === 0 ? (
-      <small>Lo sentimos, la búsqueda no ha tenido resultados</small>
-    ) : (
-      <MoviesList movies={this.state.data} />
-    );
-  };
-
+  
   render() {
+    const url = new URL(document.location)
+    const hasId = url.searchParams.has('id')
+
+    if (hasId) {
+      return <Detail id={url.searchParams.get('id')} />
+    }
+
     return (
       <div className="App">
-        <Title>Buscardor de Películas y series</Title>
-        <div className="search-form__wrapper">
-          <SearchForm handleData={this._handleData} />
-        </div>
-        {this.state.usedSearch ? (
-          this._renderResults()
-        ) : (
-          <small>
-            Usa el buscador para encontrar tu película o serie favorita
-          </small>
-        )}
+        <Home />
       </div>
     );
   }
