@@ -1,0 +1,9 @@
+.notification {
+    width: 200px;
+    height: 160px;
+    margin: 20px;
+}
+.notification-wraper {
+    display: flex;
+    justify-content: center;
+}

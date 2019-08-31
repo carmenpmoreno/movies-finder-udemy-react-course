@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Proptypes from "prop-types";
+import { Link } from "react-router-dom";
+import ButtonBackToHome from '../components/ButtonBackToHome';
 
 const API_KEY = "d2792a7a";
 
@@ -21,15 +23,12 @@ class Detail extends Component {
         this.setState({ movie });
       });
   }
-  goBack() {
-    window.history.back();
-  }
 
   render() {
     const { Title, Poster, Actors, Metascore, Plot } = this.state.movie;
     return (
       <>
-        <button onClick={this.goBack}>Volver</button>
+        <ButtonBackToHome />
         <h1>{Title}</h1>
         <img src={Poster}></img>
         <h3>{Actors}</h3>
