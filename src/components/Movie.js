@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
-import Proptypes from 'prop-types';
+import React, { Component } from "react";
+import Proptypes from "prop-types";
+
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Movie extends Component {
   render() {
-    const { poster, title, year} = this.props;
+    const { id, poster, title, year } = this.props;
     return (
-      <div className="card">
+      <Link to={`/detail/${id}`} className="card">
         <div className="card-image">
           <figure className="image">
-            <img
-              src={poster}
-              alt={title}
-             />
+            <img src={poster} alt={title} />
           </figure>
         </div>
 
@@ -24,7 +23,7 @@ class Movie extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     );
   }
 }
@@ -32,7 +31,7 @@ class Movie extends Component {
 Movie.propTypes = {
   title: Proptypes.string,
   year: Proptypes.string,
-  poster: Proptypes.string,
+  poster: Proptypes.string
 };
 
 export default Movie;

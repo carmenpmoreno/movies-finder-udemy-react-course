@@ -8,11 +8,12 @@ class Detail extends Component {
   state = { movie: {} };
 
   componentDidMount() {
-    const { id } = this.props;
-    this.fetchMovie({ id });
+    console.log(this.props);
+    const { id } = this.props.match.params;
+    this._fetchMovie({ id });
   }
 
-  fetchMovie({ id }) {
+  _fetchMovie({ id }) {
     fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`)
       .then(resp => resp.json())
       .then(movie => {
@@ -28,7 +29,7 @@ class Detail extends Component {
     const { Title, Poster, Actors, Metascore, Plot } = this.state.movie;
     return (
       <>
-        <button onClick={this.goBack}></button>
+        <button onClick={this.goBack}>Volver</button>
         <h1>{Title}</h1>
         <img src={Poster}></img>
         <h3>{Actors}</h3>
@@ -40,7 +41,9 @@ class Detail extends Component {
 }
 
 Detail.propTypes = {
-  id: Proptypes.string
+  match: Proptypes.shape({
+    params: Proptypes.objectOf(Proptypes.string)
+  })
 };
 
 export default Detail;
