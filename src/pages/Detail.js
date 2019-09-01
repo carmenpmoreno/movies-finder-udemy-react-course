@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import Proptypes from "prop-types";
-import { Link } from "react-router-dom";
 import ButtonBackToHome from '../components/ButtonBackToHome';
 
 const API_KEY = "d2792a7a";
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Detail extends Component {
+
+  static propTypes = {
+    match: Proptypes.shape({
+      params: Proptypes.objectOf(Proptypes.string)
+    })
+  }
+
   state = { movie: {} };
 
   componentDidMount() {
@@ -30,7 +36,7 @@ class Detail extends Component {
       <>
         <ButtonBackToHome />
         <h1>{Title}</h1>
-        <img src={Poster}></img>
+        <img src={Poster} alt={Title}></img>
         <h3>{Actors}</h3>
         <span>{Metascore}</span>
         <p>{Plot}</p>
@@ -38,11 +44,5 @@ class Detail extends Component {
     );
   }
 }
-
-Detail.propTypes = {
-  match: Proptypes.shape({
-    params: Proptypes.objectOf(Proptypes.string)
-  })
-};
 
 export default Detail;

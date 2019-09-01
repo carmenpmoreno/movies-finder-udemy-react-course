@@ -5,6 +5,11 @@ import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Movie extends Component {
+  static propTypes = {
+    title: Proptypes.string,
+    year: Proptypes.string,
+    poster: Proptypes.string
+  };
   render() {
     const { id, poster, title, year } = this.props;
     return (
@@ -27,11 +32,5 @@ class Movie extends Component {
     );
   }
 }
-
-Movie.propTypes = {
-  title: Proptypes.string,
-  year: Proptypes.string,
-  poster: Proptypes.string
-};
 
 export default Movie;
