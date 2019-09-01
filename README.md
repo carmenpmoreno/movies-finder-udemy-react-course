@@ -1,6 +1,6 @@
 ## Movies finder project
 
-Project of the udemy course: https://www.udemy.com/aprendiendo-react/learn/lecture/8827512#overview
+Project of the udemy course: https://www.udemy.com/aprendiendo-react/
 
 ## TO START DE PROJECT
 
