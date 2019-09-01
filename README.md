@@ -4,7 +4,7 @@ Project of the udemy course: https://www.udemy.com/aprendiendo-react/learn/lectu
 
 ## TO START DE PROJECT
 
-Make sure you install bulma for de css in the project directory:
+Make sure you install bulma in the project directory, you may need it for some css classes
 
 ### `npm install bulma --save --save-exact`
 
